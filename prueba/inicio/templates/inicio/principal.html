@@ -1,5 +1,5 @@
 {% extends "inicio/encabezado.html" %}
-<title>{% block Encabezado %}Principal{% endblock %}</title>
+{% block Encabezado %}Principal{% endblock %}
 
 {% block imagen %}
 {% load static %}
@@ -9,17 +9,9 @@
 {% block titulo_usuario %}Principal{% endblock %}
 {% block subtitulo_usuario %}DSM{% endblock %}
 
+{% block titulo_encabezado %}Alumnos{% endblock %}
+{% block subtitulo_encabezado %}Lista de Alumnos{% endblock %}
+
 {% block contenido %}
-<!-- Contenido Principal-->
-<div class="page-content">
-    <!--Encabezdo -->
-    <div class="page-header">
-        <div class="page-title">
-            <h3>Alumnos
-                <small>Lista de Alumnos </small>
-            </h3>
-        </div>
-    </div>
-</div>
-<!-- /Contenido Principal-->
+
 {% endblock %}
