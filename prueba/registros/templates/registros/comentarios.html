@@ -1,0 +1,41 @@
+{% extends "inicio/encabezado.html" %}
+{% block Encabezado %}Comentarios{% endblock %}
+
+{% block imagen %}
+{% load static %}
+{% static 'inicio/images/home.png' %}
+{% endblock %}
+
+{% block titulo_usuario %}Comentarios{% endblock %}
+{% block subtitulo_usuario %}DSM{% endblock %}
+
+{% block titulo_encabezado %}Comentarios{% endblock %}
+{% block subtitulo_encabezado %}Lista de Comentarios{% endblock %}
+
+{% block contenido%}
+	    
+	<!--Tabla alumnos-->
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+			<th>Usuario</th>
+			<th>Mensaje</th>
+            <th></th>
+            <th></th>
+            
+			</tr>
+		</thead>
+		<tbody>
+      {% for comentario in comentarios %}
+        <tr>
+            <td class="text-semibold">{{ comentario.usuario }}</td>
+            <td class="muted">{{ comentario.mensaje }}</td>
+            <td class="muted">EDITAR</td>
+            <td class="muted">ELIMINAR</td>
+        </tr>
+      {% endfor %}
+
+        </tbody>
+    
+{%endblock%}
+

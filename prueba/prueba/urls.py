@@ -23,12 +23,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views_registros.registros, name="Principal"),
-    path('contacto/',views_registros.contacto, name="Contacto"),
+    path('contacto/',views_registros.registrar, name="Contacto"),
     path('formulario/',views.formulario, name="Formulario"),
     path('ejemplo/',views.ejemplo, name="Ejemplo"),
     path('registrar/',views_registros.registrar,name="Registrar"),
+    path('comentarios/',views_registros.comentarios,name="Comentarios")
 
 ]
-if settings.DEBUG:
+if settings.DEBUG:  
     from django.conf.urls.static import static 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

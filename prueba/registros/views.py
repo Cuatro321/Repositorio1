@@ -1,26 +1,27 @@
-from django.shortcuts import render
-from .models import Alumnos
+from django.shortcuts import render, redirect
+from .models import Alumnos, ComentarioContacto
 from .forms import ComentarioContactoForm
-#Accedemos al modelo Alumnos que contine la estructura de la tabla
 
-# Create your views here.
+# Vista para mostrar todos los alumnos
 def registros(request):
-    alumnos=Alumnos.objects.all()
-      #all recupera todos los objetos del modelo (registros de la tabla alumnos)  
-    return render(request,"registros/principal.html",{'alumnos':alumnos})
-    #Indicamos el lugar donde se renderizará el resultado de esta bista 
-    #y enviamos la lista de alumnos recuperados
+    alumnos = Alumnos.objects.all()
+    return render(request, "registros/principal.html", {'alumnos': alumnos})
 
+# Vista para mostrar formulario de contacto y guardar comentarios
 def registrar(request):
     if request.method == 'POST':
         form = ComentarioContactoForm(request.POST)
-        if form.is_valid(): #Si los datos recibidos son correctos
+        if form.is_valid():
             form.save()
-            return render(request,'registros/contacto.html')
-    form = ComentarioContactoForm()
-    #Si algo sale mal se reenvian al formulario los datos ingresados
-    return render(request,'registros/contacto.html',{'form':form})
+            return redirect('Comentarios') 
+    else:
+        form = ComentarioContactoForm()
+    
+    return render(request, 'registros/contacto.html', {'form': form})
 
-def contacto(request):
-    return render(request,"registros/contacto.html")
-    #Indicamos el lugar donde se renderizara el resultado de esta vista
+# Vista para mostrar los comentarios guardados
+def comentarios(request):
+    lista = ComentarioContacto.objects.all()
+    return render(request, 'registros/comentarios.html', {
+        'comentarios': lista
+    })
