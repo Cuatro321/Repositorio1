@@ -3,7 +3,7 @@
 
 {% block imagen %}
 {% load static %}
-{% static 'inicio/images/home.png' %}
+{% static 'inicio/images/Comentarios.png' %}
 {% endblock %}
 
 {% block titulo_usuario %}Comentarios{% endblock %}
@@ -30,8 +30,8 @@
         <tr>
             <td class="text-semibold">{{ comentario.usuario }}</td>
             <td class="muted">{{ comentario.mensaje }}</td>
-            <td class="muted">EDITAR</td>
-            <td class="muted">ELIMINAR</td>
+            <td class="muted"><a href="{%url 'ConsultaIndividual' comentario.id%}">Editar</a></td>
+            <td class="text-center"><a href="{%url 'Eliminar' comentario.id%}">Eliminar</a></td>
         </tr>
       {% endfor %}
 

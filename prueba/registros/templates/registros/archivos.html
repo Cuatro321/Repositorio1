@@ -1,0 +1,51 @@
+{% extends "inicio/encabezado.html" %}
+{% block Encabezado %}Cargar Archivos{% endblock %}
+
+{% block imagen %}
+{% load static %}
+{% static 'inicio/images/contacto.png' %}
+{% endblock %}
+
+{% block titulo_usuario %}Cargar Archivo{% endblock %}
+{% block subtitulo_usuario %}DSM{% endblock %}
+
+{% block titulo_encabezado %}Archivos{% endblock %}
+{% block subtitulo_encabezado %}Envia tu documento{% endblock %}
+
+{% block contenido %}
+<form class="form-horizontal" action="{%url 'Subir'%}" method="POST" role="form">
+{% csrf_token %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label text-right">Titulo:</label>
+                <div class="col-sm-10">
+                    <input name="titulo" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label text-right">Descripcion:</label>
+                <div class="col-sm-10">
+                    <textarea name="descipcion" class="form-control" cols="50" rows="10"></textarea>
+                </div>
+
+            </div>
+                <div class="form-group">
+                <label class="col-sm-2 control-label text-right">Archivo:</label>
+                <div class="col-sm-10">
+                    <input name="archivo" type="file"/>
+                </div>
+            </div>
+
+
+            <div class="form-actions text-right">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </div>
+
+        </div>
+    </div>
+</form>
+{% endblock %}
+    
