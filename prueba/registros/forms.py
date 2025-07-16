@@ -9,13 +9,11 @@ class ComentarioContactoForm(forms.ModelForm):
         model = ComentarioContacto
         fields = ['usuario','mensaje']
 
-class CustomClearableFileInput(ClearableFileInput):
-    template_with_clear = '<br><label for="%(clear_checkbox_id)s">%(clear_checkbox_label)s</label>%(clear)s'
-
+class CustomClearableFileInput(ClearableFileInput):template_with_clear = '<br> <labelfor="%(clear_checkbox_id)s">%(clear_checkbox_label)s</label> %(clear)s'
 class FormArchivos(ModelForm):
     class Meta:
-        model:Archivos
-        fields = ('titulo','descripcion','archivo') 
-        widgets={
+        model = Archivos
+        fields = ('titulo', 'descripcion', 'archivo')
+        widgets = {
             'archivo': CustomClearableFileInput
         }

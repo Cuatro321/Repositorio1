@@ -110,17 +110,21 @@ def consulta5(request):
     return render(request, "registros/comentarios.html", {'comentarios': comentarios})
 
 
-def  archivos (request):
-    if request.method == 'POST':
-        form = FormArchivos(request.POST,request.FILES)
-        if form.is_invalid():
-            titulo= request.POST['titulo']
-            descripcion = request.POST['descripcion']
-            archivo = request.FILES['archivo']
-            insert = Archivos(titulo=titulo, descripcion=descripcion,archivo=archivo)
-            insert.save()
-            return render(request="registros/archivos.html")
-        else: 
-            messages.error(request,"Error al procesar el formulario")
+def archivos(request):
+ if request.method == 'POST':
+    form = FormArchivos(request.POST, request.FILES)
+    if form.is_valid():
+        titulo = request.POST['titulo']
+        descripcion = request.POST['descripcion']
+        archivo = request.FILES['archivo']
+        insert = Archivos(titulo=titulo, descripcion=descripcion,
+        archivo=archivo)
+        insert.save()
+        return render(request,"registros/archivos.html")
     else:
-        return render(request,"registros/archivos.html",{'archivo':Archivos})
+
+        messages.error(request, "Error al procesar el formulario")
+
+ else:
+    return render(request,"registros/archivos.html",{'archivo':Archivos})
+    
