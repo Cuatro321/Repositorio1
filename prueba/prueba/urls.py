@@ -41,6 +41,9 @@ urlpatterns = [
     path('consulta1/', views_registros.consulta1, name="Consultas"),
     path('consulta2/', views_registros.consulta2, name="Consultas"),
     path('subir',views_registros.archivos,name="Subir"),
+    path('consultasSQL',views_registros.consultasSQL,name="sql"),
+    path('seguridad',views_registros.seguridad,name="Seguridad"),
+
 
 ]
 if settings.DEBUG:  
